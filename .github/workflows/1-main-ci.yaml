@@ -1,13 +1,13 @@
 name: Main
 on:
   pull_request:
-    type:
+    types:
       - closed
     branches:
-      - "main"
+      - 'main'
 
 jobs:
   publish-image:
     if: github.event.pull_request.merged == true
-    uses: ./.github/workflows/publish.yaml
+    uses: ./.github/workflows/publish.yml
     secrets: inherit
