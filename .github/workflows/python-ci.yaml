@@ -1,32 +1,31 @@
 name: 'Python CI'
 
 # Github Actions permissions doc: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
-
 permissions:
   id-token: write
   contents: write
   actions: write
   pull-requests: write
-  packages: write
+  packages: read
 
 on:
   workflow_call:
-    settings-file:
-      description: 'Path to the settings file'
-      required: false
-      type: string
-      default: 'settings.yml'
-    docker-file-path:
-      description: 'Path to the Dockerfile'
-      required: false
-      type: string
-      default: '.'
-    runs-on: # [Importante deixar sempre declarado] Runner do job (container)
-      description: 'Runner label to use'
-      required: false
-      type: string
-      default: 'ubuntu-latest'
-
+    inputs:
+      settings-file:
+        description: 'Path to the settings file'
+        required: false
+        type: string
+        default: 'settings.yml'
+      docker-file-path:
+        description: 'Path to the Dockerfile'
+        required: false
+        type: string
+        default: '.'
+      runs-on:  # [Importante deixar sempre declarado] Runner do job (container)
+        description: 'Runner label to use'
+        required: false
+        type: string
+        default: 'ubuntu-latest'
 jobs:
   ci-image:
     runs-on: ${{ inputs.runs-on }} # Runner passed via input (or using the default)
