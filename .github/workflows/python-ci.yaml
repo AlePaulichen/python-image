@@ -26,7 +26,6 @@ on:
       required: false
       type: string
       default: 'ubuntu-latest'
-name: 'Python CI'
 
 permissions:
   id-token: write
